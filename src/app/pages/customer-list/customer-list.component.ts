@@ -1,34 +1,21 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { StorageService } from '../../shared/services/storage.service';
-import { ToolbarComponent } from '../../shared/components/toolbar/toolbar.component';
-import { SidenavComponent } from '../../shared/components/sidenav/sidenav.component';
-import { ClientService } from '../../shared/services/client.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { Client } from '../../shared/model/cliente';
-import { CardComponent } from '../../shared/components/card/card.component';
-import { MatButtonModule } from '@angular/material/button';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
-import { CustomerCreateDialogComponent } from './customer-create-dialog/customer-create-dialog.component';
-import { RouterModule } from '@angular/router';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatToolbar } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { CardComponent } from '../../shared/components/card/card.component';
+import { Client } from '../../shared/model/cliente';
+import { ClientService } from '../../shared/services/client.service';
+import { StorageService } from '../../shared/services/storage.service';
+import { CustomerCreateDialogComponent } from './customer-create-dialog/customer-create-dialog.component';
 
 @Component({
   selector: 'app-customer-list',
   imports: [
-    
     CommonModule,
     HttpClientModule,
     MatPaginatorModule,
@@ -37,7 +24,6 @@ import { MatToolbar } from '@angular/material/toolbar';
     MatSelectModule,
     MatFormFieldModule,
     FormsModule,
-
   ],
   providers: [ClientService],
   templateUrl: './customer-list.component.html',
@@ -90,7 +76,7 @@ export class CustomerListComponent implements OnInit {
 
   paginationPageSize(pageSize: number) {
     this.pageSize = pageSize;
-    this.pagination(this.currentPage)
+    this.pagination(this.currentPage);
   }
 
   getNameUser(): void {
@@ -103,19 +89,16 @@ export class CustomerListComponent implements OnInit {
   }
 
   handlePageEvent(e: PageEvent) {
-    console.log(e);
     this.findUsers(e.pageIndex, e.pageSize);
   }
 
   newClient(): void {
     const dialogRef = this.dialog.open(CustomerCreateDialogComponent, {
       width: '400px',
-      data: {title:'Criar cliente:'},
+      data: { title: 'Criar cliente:' },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed new');
-      console.log(result);
       if (result !== null) {
         this.findUsers(0, 10);
       }

@@ -1,21 +1,13 @@
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { Client } from '../../model/cliente';
-import { CommonModule, CurrencyPipe } from '@angular/common';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
 import { CustomerCreateDialogComponent } from '../../../pages/customer-list/customer-create-dialog/customer-create-dialog.component';
-import { ClientService } from '../../services/client.service';
 import { CustomerDeleteDialogComponent } from '../../../pages/customer-list/customer-delete-dialog/customer-delete-dialog.component';
+import { Client } from '../../model/cliente';
+import { ClientService } from '../../services/client.service';
 
 @Component({
   selector: 'app-card',
@@ -27,8 +19,8 @@ import { CustomerDeleteDialogComponent } from '../../../pages/customer-list/cust
 export class CardComponent {
   @Input() client: Client = { id: 0, name: '', salary: 0, companyValuation: 0 };
   @Input() screen: string = '';
-  @Output() atClose: EventEmitter<boolean> = new EventEmitter;
-  @Output() atRemoveClient: EventEmitter<boolean> = new EventEmitter;
+  @Output() atClose: EventEmitter<boolean> = new EventEmitter();
+  @Output() atRemoveClient: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private dialog: MatDialog, private clientService: ClientService) {}
 
@@ -37,15 +29,13 @@ export class CardComponent {
   }
 
   editClient(client: Client): void {
-    console.log(client);
     const dialogRef = this.dialog.open(CustomerCreateDialogComponent, {
       disableClose: true,
       width: '400px',
-      data: { client: client, title:'Editar cliente:' },
+      data: { client: client, title: 'Editar cliente:' },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       if (result !== null) {
         this.atClose.emit(true);
       }
@@ -60,15 +50,14 @@ export class CardComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       if (result !== null) {
         this.atClose.emit(true);
       }
     });
   }
 
-  removeClientSelected(client: Client): void { 
-    this.clientService.removerClienteSelecionado(client)
-    this.atRemoveClient.emit(true)
+  removeClientSelected(client: Client): void {
+    this.clientService.removerClienteSelecionado(client);
+    this.atRemoveClient.emit(true);
   }
 }

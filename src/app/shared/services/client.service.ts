@@ -16,14 +16,9 @@ export class ClientService {
 
   private totalElements = 0;
   private currentPage = 0;
-  private totalPages = 0; // Itens por página
+  private totalPages = 0; 
 
   constructor(private http: HttpClient) {}
-
-  /* findUsers(page: number, limit: number): Observable<any> {
-    const link = this.requestURL + `users?page=${page}&limit=${limit}`;
-    return this.http.get(link);
-  } */
 
   findUsers(page: number, limit: number): void {
     const params = new HttpParams()
@@ -48,7 +43,7 @@ export class ClientService {
     localStorage.setItem('clientesSelecionados', JSON.stringify(clientes));
   }
   
-  // Recupera os clientes selecionados do localStorage
+
   private carregarClientesSelecionados(): any[] {
     const clientes = localStorage.getItem('clientesSelecionados');
     return clientes ? JSON.parse(clientes) : [];
@@ -58,10 +53,8 @@ export class ClientService {
     let clientesSelecionados = this.carregarClientesSelecionados();
   
     if (client.selecionado) {
-      // Remover da lista caso já esteja selecionado
       clientesSelecionados = clientesSelecionados.filter(c => c.id !== client.id);
     } else {
-      // Adicionar apenas se ainda não estiver na lista
       if (!clientesSelecionados.some(c => c.id === client.id)) {
         clientesSelecionados.push(client);
       }
@@ -69,7 +62,6 @@ export class ClientService {
   
     client.selecionado = !client.selecionado;
   
-    // Atualiza os observables e o localStorage
     this.clientsSelecionadosSubject.next(clientesSelecionados);
     this.salvarClientesSelecionados(clientesSelecionados);
   }
@@ -80,9 +72,8 @@ export class ClientService {
     const clientesAtuais = this.getClientesSelecionados();
     const clientesAtualizados = clientesAtuais.filter((c) => c.id !== cliente.id);
     this.clientsSelecionadosSubject.next(clientesAtualizados);
-    this.salvarClientesSelecionados(clientesAtualizados); // Atualiza o localStorage
+    this.salvarClientesSelecionados(clientesAtualizados);
 
-    // Atualiza o estado de seleção na lista de usuários
     const client = this.clients.find((u) => u.id === cliente.id);
     if (client) {
       client.selecionado = false;

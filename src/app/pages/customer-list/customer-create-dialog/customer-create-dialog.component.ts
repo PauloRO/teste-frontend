@@ -1,31 +1,13 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  FormGroupDirective,
-  FormsModule,
-  NgForm,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
-import { MatDialogModule } from '@angular/material/dialog';
 import { Client, getClientFormGroup } from '../../../shared/model/cliente';
 import { ClientService } from '../../../shared/services/client.service';
-import { ErrorStateMatcher } from '@angular/material/core';
-import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-customer-create-dialog',
@@ -37,7 +19,7 @@ import { MatIcon } from '@angular/material/icon';
     MatDialogModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatIcon
+    MatIcon,
   ],
   providers: [ClientService],
   templateUrl: './customer-create-dialog.component.html',
@@ -69,14 +51,11 @@ export class CustomerCreateDialogComponent {
       next: (res) => {
         this.closeDialog(res);
       },
-      error: (err) => {
-        console.log(err);
-      },
+      error: (err) => {},
     });
   }
 
   closeDialog(value: any) {
-    console.log(value);
     this.dialogRef.close(value);
   }
 

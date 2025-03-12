@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ClientService } from '../../../shared/services/client.service';
 import { Client } from '../../../shared/model/cliente';
+import { ClientService } from '../../../shared/services/client.service';
 
 @Component({
   selector: 'app-customer-delete-dialog',
@@ -32,14 +32,11 @@ export class CustomerDeleteDialogComponent {
       next: () => {
         this.closeDialog(this.client);
       },
-      error: (err) => {
-        console.error(err);
-      },
+      error: (err) => {},
     });
   }
 
-  closeDialog(value: any) { 
-    console.log(value)
+  closeDialog(value: any) {
     this.dialogRef.close(value);
   }
 }
