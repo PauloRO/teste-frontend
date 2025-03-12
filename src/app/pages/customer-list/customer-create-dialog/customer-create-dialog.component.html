@@ -1,0 +1,29 @@
+<mat-dialog-content class="column">
+  <form [formGroup]="formGroup">
+    <mat-form-field style="width: 100%">
+      <mat-label>Digite o nome:</mat-label>
+      <input matInput formControlName="name" />
+      @if (hasValidationError('required', 'name')) {
+        <mat-error>Nome é <strong>obrigatório</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field style="width: 100%">
+      <mat-label>Digite o salário:</mat-label>
+      <input matInput placeholder="R$ 00.0" type="number" formControlName="salary" />
+      @if (hasValidationError('required', 'salary')) {
+        <mat-error>Campo é <strong>obrigatório</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field style="width: 100%">
+      <mat-label>Digite o valor da empresa:</mat-label>
+      <input matInput placeholder="R$ 00.0" type="number" formControlName="companyValuation" />
+      @if (hasValidationError('required', 'companyValuation')) {
+        <mat-error>Campo é <strong>obrigatório</strong></mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button class="button-close" (click)="closeDialog(null)">Cancelar</button>
+  <button mat-button cdkFocusInitial class="button" (click)="createClient()" [disabled]="!formGroup.valid">Criar</button>
+</mat-dialog-actions>

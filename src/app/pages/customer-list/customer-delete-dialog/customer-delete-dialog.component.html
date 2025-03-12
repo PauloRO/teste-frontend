@@ -1,0 +1,9 @@
+<span mat-dialog-title><strong>Excluir cliente:</strong></span>
+<mat-dialog-content>
+  <span> Você está prestes a excluir o cliente: <strong>{{ client?.name }}</strong> </span>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close class="button-close" (click)="closeDialog(null)">Cancelar</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="deleteClient()" class="button">Excluir</button>
+</mat-dialog-actions>
+s

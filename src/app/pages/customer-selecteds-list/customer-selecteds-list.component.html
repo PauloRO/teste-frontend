@@ -1,0 +1,12 @@
+<app-toolbar [name]="userName" (openSidenav)="openMenu($event)"></app-toolbar>
+<div class="container">
+    <div class="container-cards">
+      <div class="cards">
+        <div *ngFor="let client of clients">
+          <app-card [client]="client" (atClose)="atDialogClosed($event)" (atRemoveClient)="updateClients($event)" [screen]="'selected'"></app-card>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  

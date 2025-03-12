@@ -1,0 +1,27 @@
+span {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px !important;
+  line-height: 100%;
+}
+
+.button {
+  background-color: #ec6724;
+  border-radius: 5px;
+  color: #fff !important;
+}
+
+.button:hover {
+  background-color: #ffb894df !important;
+}
+
+
+.button-close {
+  background-color: #ec2424;
+  border-radius: 5px;
+  color: #fff !important;
+}
+
+.button-close:hover {
+  background-color: #ef7a7a7d !important;
+}

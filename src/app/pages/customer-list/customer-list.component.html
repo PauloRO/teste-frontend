@@ -1,2 +1,29 @@
-<app-toolbar [name]="userName"></app-toolbar>
-<p>customer-list works!</p>
+<!-- <app-sidenav [show]="showMenu"></app-sidenav> -->
+<app-toolbar [name]="userName" (openSidenav)="openMenu($event)"></app-toolbar>
+<div class="container">
+  <div class="container-cards">
+    <div class="row-direction">
+      <span
+        ><strong>{{ totalElements }}</strong> clientes encontrados:</span
+      >
+      <span>Clientes por página</span>
+    </div>
+    <div class="cards">
+      <div *ngFor="let client of clients">
+        <app-card [client]="client" (atClose)="atDialogClosed($event)" [screen]="'list'"></app-card>
+      </div>
+    </div>
+    <button mat-stroked-button class="button-new" (click)="newClient()">Criar cliente</button>
+    <div>
+      <mat-paginator
+        [length]="100"
+        [pageSize]="totalElements"
+        [pageIndex]="currentPage"
+        (page)="handlePageEvent($event)"
+        [pageSizeOptions]="[5, 10, 50, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>
