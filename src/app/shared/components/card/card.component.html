@@ -1,0 +1,27 @@
+<mat-card appearance="outlined" class="card row">
+  <mat-card-content class="column w-100">
+    <span
+      ><strong>{{ client.name }}</strong></span
+    >
+    <span>Salário: {{ client.salary | currency : 'BRL' }}</span>
+    <span>Empresa: {{ client.companyValuation | currency : 'BRL' }}</span>
+    <div class="row-direction w-100" *ngIf="screen == 'list'">
+      <button mat-icon-button (click)="toggleSelecao(client)">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-icon-button (click)="editClient(client)">
+        <mat-icon >edit</mat-icon>
+      </button>
+      <button mat-icon-button style="color: red" (click)="deleteClient(client)">
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </div>
+
+    <div class="row-direction w-100" *ngIf="screen == 'selected'">
+      <button mat-icon-button (click)="removeClientSelected(client)">
+        <mat-icon>remove</mat-icon>
+      </button>
+      
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,4 +1,4 @@
-.flex-toolbar{
+.flex-toolbar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -13,12 +13,19 @@
 .logo {
   width: 100px;
   height: 50px;
+  object-fit: cover;
 }
 
-.user-name{
+.user-name {
   font-family: Inter;
   font-weight: 400;
   font-size: 16px;
   line-height: 100%;
   letter-spacing: 0%;
+}
+
+.custom-button:hover {
+  color: #ec6724;
+  text-decoration: underline;
+  background-color: #e7c6b681;
 }

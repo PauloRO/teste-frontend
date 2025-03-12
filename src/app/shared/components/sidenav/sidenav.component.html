@@ -1,7 +1,5 @@
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-      <p>Auto-resizing sidenav</p>
-    </mat-drawer>
-  
-  </mat-drawer-container>
-  
+  <mat-drawer #sidenav [(opened)]="show" class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+</mat-drawer-container>

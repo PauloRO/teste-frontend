@@ -1,15 +1,15 @@
 <mat-toolbar>
   <div class="flex-toolbar">
     <div class="example-spacer">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="openMenu()">
         <mat-icon>menu</mat-icon>
       </button>
-      <img src="../../assets/images/logos/logo-teddy.png" class="logo" />
+      <!-- <img src="src/app/shared/assets/images/logos/logo.png" class="logo"  /> -->
     </div>
     <div class="example-spacer">
-      <button mat-button class="user-name">Clientes</button>
-      <button mat-button class="user-name">Clientes selecionados</button>
-      <button mat-button class="user-name">Sair</button>
+      <button mat-button class="user-name custom-button" (click)="goToClients()">Clientes</button>
+      <button mat-button class="user-name custom-button" (click)="goToSelectedList()">Clientes selecionados</button>
+      <button mat-button class="user-name custom-button" (click)="logout()">Sair</button>
     </div>
     <label class="user-name"
       >Olá, <strong>{{ name }}</strong
