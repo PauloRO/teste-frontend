@@ -5,6 +5,7 @@
 Antes de começar, certifique-se de ter instalado:
 
 Node.js (22.9.0)
+
 Angular CLI 19.2.1 (se ainda não tiver, instale com: npm install -g @angular/cli)
 
 ▶️ 2. Clonando o Repositório
