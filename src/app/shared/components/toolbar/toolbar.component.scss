@@ -15,10 +15,14 @@
 }
 
 .logo {
-  width: 100px;
+  background-image: url("../../assets/images/teddy-logo.png");
+  background-size: contain; /* Ajusta a imagem sem cortar */
+  background-repeat: no-repeat; /* Evita repetições indesejadas */
+  background-position: center;
+  width: 150px;
   height: 50px;
-  object-fit: cover;
 }
+
 
 .user-name {
   font-family: Inter;
@@ -34,6 +38,12 @@
   background-color: #e7c6b681;
 }
 .custom-button:active {
-
   background-color: #f1c6b0;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
 }

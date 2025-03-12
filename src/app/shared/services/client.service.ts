@@ -55,15 +55,26 @@ export class ClientService {
   }
 
   toggleSelectClient(client: any): void {
+    let clientesSelecionados = this.carregarClientesSelecionados();
+  
+    if (client.selecionado) {
+      // Remover da lista caso já esteja selecionado
+      clientesSelecionados = clientesSelecionados.filter(c => c.id !== client.id);
+    } else {
+      // Adicionar apenas se ainda não estiver na lista
+      if (!clientesSelecionados.some(c => c.id === client.id)) {
+        clientesSelecionados.push(client);
+      }
+    }
+  
     client.selecionado = !client.selecionado;
-    this.clientSubject.next(this.clients);
-
-    const clientesAtuais = this.getClientesSelecionados();
-
-    const clientesSelecionados = this.clients.filter((u) => u.selecionado).concat(clientesAtuais);
+  
+    // Atualiza os observables e o localStorage
     this.clientsSelecionadosSubject.next(clientesSelecionados);
     this.salvarClientesSelecionados(clientesSelecionados);
   }
+  
+  
 
   removerClienteSelecionado(cliente: any): void {
     const clientesAtuais = this.getClientesSelecionados();

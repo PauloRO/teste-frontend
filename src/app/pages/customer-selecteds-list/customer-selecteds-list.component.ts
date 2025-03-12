@@ -11,7 +11,7 @@ import { Client } from '../../shared/model/cliente';
 
 @Component({
   selector: 'app-customer-selecteds-list',
-  imports: [ToolbarComponent, CommonModule, HttpClientModule, CardComponent, MatButtonModule],
+  imports: [CommonModule, HttpClientModule, CardComponent, MatButtonModule],
   providers: [ClientService],
   templateUrl: './customer-selecteds-list.component.html',
   styleUrl: './customer-selecteds-list.component.scss',

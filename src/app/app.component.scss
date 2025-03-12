@@ -8,6 +8,10 @@
   height: 150px;
   width: 100%;
   margin-bottom: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .column {
@@ -35,7 +39,11 @@
   color: #000;
 }
 
-.logo{
-    width: 100px;
-    height: 100px;
+.logo {
+  background-image: url("../app/shared/assets/images/teddy-logo.png");
+  background-size: contain; /* Ajusta a imagem sem cortar */
+  background-repeat: no-repeat; /* Evita repetições indesejadas */
+  background-position: center;
+  width: 150px;
+  height: 50px;
 }
