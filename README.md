@@ -1,5 +1,6 @@
-🚀 Como Rodar o Projeto
-🔧 1. Pré-requisitos
+# 🚀 Como Rodar o Projeto
+
+# 🔧 1. Pré-requisitos
 
 Antes de começar, certifique-se de ter instalado:
 
@@ -24,13 +25,13 @@ ng serve --open
 
 O projeto será aberto automaticamente, se não, abra usando o link http://localhost:4200/.
 
-📚 Dependências Utilizadas
+# 📚 Dependências Utilizadas
 🔹 Angular Material
 
 Framework de componentes UI para Angular.
 Angular Material
 Material Icons
 
-** OBSERVAÇÕES FINAIS **
+# ** OBSERVAÇÕES FINAIS **
 
 O Projeto esta usando LocalStorage para armazenar dados pois pensei que seria mais facil de manipulalos.
