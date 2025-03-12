@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.toolbar{
+  background-color: #FFF;
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }
@@ -28,4 +32,8 @@
   color: #ec6724;
   text-decoration: underline;
   background-color: #e7c6b681;
+}
+.custom-button:active {
+
+  background-color: #f1c6b0;
 }

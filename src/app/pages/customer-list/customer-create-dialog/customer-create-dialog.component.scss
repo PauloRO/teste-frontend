@@ -21,6 +21,7 @@ input[type='number'] {
   background-color: #ec6724;
   border-radius: 5px;
   color: #fff !important;
+  width: 100%;
 }
 
 .button:hover {
@@ -35,4 +36,20 @@ input[type='number'] {
 
 .button-close:hover {
   background-color: #ef7a7a7d !important;
+}
+
+span {
+  font-family: Inter;
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  line-height: 100%;
+}
+
+.row-direction {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 98%;
 }

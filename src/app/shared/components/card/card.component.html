@@ -1,3 +1,4 @@
+
 <mat-card appearance="outlined" class="card row">
   <mat-card-content class="column w-100">
     <span
@@ -10,7 +11,7 @@
         <mat-icon>add</mat-icon>
       </button>
       <button mat-icon-button (click)="editClient(client)">
-        <mat-icon >edit</mat-icon>
+        <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button style="color: red" (click)="deleteClient(client)">
         <mat-icon>delete_outline</mat-icon>
@@ -18,10 +19,9 @@
     </div>
 
     <div class="row-direction w-100" *ngIf="screen == 'selected'">
-      <button mat-icon-button (click)="removeClientSelected(client)">
+      <button mat-icon-button style="color: #ec6724" (click)="removeClientSelected(client)">
         <mat-icon>remove</mat-icon>
       </button>
-      
     </div>
   </mat-card-content>
 </mat-card>

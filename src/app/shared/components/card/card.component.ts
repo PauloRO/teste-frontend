@@ -41,7 +41,7 @@ export class CardComponent {
     const dialogRef = this.dialog.open(CustomerCreateDialogComponent, {
       disableClose: true,
       width: '400px',
-      data: { client: client },
+      data: { client: client, title:'Editar cliente:' },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

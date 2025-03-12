@@ -1,2 +1,47 @@
+<!-- <router-outlet /> -->
 
-<router-outlet />
+<!-- <mat-sidenav-container class="container">
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Meu App</span>
+  </mat-toolbar>
+
+  <mat-sidenav #sidenav mode="side" opened>
+    <a mat-list-item routerLink="/pagina1" routerLinkActive="active">Página 1</a>
+    <a mat-list-item routerLink="/pagina2" routerLinkActive="active">Página 2</a>
+  </mat-sidenav>
+
+  <mat-sidenav-content> </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<mat-drawer-container autosize style="height: 100%;">
+  <mat-drawer class="sidenav-container" #drawer mode="side" [(opened)]="showMenu">
+    <div class="column">
+      <div class="logo-container">
+        <img src="../../public/favicon.ico" alt="Teste" class="logo" />
+      </div>
+      <div class="column" style="gap: 10px">
+        <div class="row">
+          <mat-icon >house</mat-icon>
+
+          <a class="link" mat-list-item routerLink="/home" routerLinkActive="active" (click)="showMenu = false">Home</a>
+        </div>
+        <div class="row">
+          <mat-icon style="color: #ec6724;">people</mat-icon>
+          <a class="link" mat-list-item routerLink="/customer-list" routerLinkActive="active" style="color: #ec6724;">Clientes</a>
+        </div>
+        <!--  <div>
+                <mat-icon>house</mat-icon>
+                <a mat-list-item routerLink="/contato" routerLinkActive="active">Produtos</a>
+            </div> -->
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-toolbar [name]="userName" (openSidenav)="openMenu($event)"></app-toolbar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

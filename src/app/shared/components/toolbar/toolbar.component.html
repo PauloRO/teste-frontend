@@ -1,10 +1,10 @@
-<mat-toolbar>
+<mat-toolbar *ngIf="!display" class="toolbar">
   <div class="flex-toolbar">
     <div class="example-spacer">
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="openMenu()">
         <mat-icon>menu</mat-icon>
       </button>
-      <!-- <img src="src/app/shared/assets/images/logos/logo.png" class="logo"  /> -->
+      <img src="src/app/shared/assets/images/logos/logo.png" class="logo"  />
     </div>
     <div class="example-spacer">
       <button mat-button class="user-name custom-button" (click)="goToClients()">Clientes</button>

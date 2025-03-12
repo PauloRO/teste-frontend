@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   margin: 30px;
+
 }
 
 .container-cards {
@@ -34,6 +35,14 @@
   width: 100%;
 }
 
+.row-pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
 span {
   font-family: Inter;
   font-weight: 400;
@@ -52,3 +61,7 @@ span {
   background-color: #e6a17e50 !important;
 }
 
+.mat-select{
+  width: 70px;
+  height: 50px;
+}

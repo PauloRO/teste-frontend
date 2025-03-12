@@ -1,12 +1,22 @@
 <!-- <app-sidenav [show]="showMenu"></app-sidenav> -->
-<app-toolbar [name]="userName" (openSidenav)="openMenu($event)"></app-toolbar>
+<!-- <app-toolbar [name]="userName" (openSidenav)="openMenu($event)"></app-toolbar> -->
 <div class="container">
   <div class="container-cards">
     <div class="row-direction">
       <span
         ><strong>{{ totalElements }}</strong> clientes encontrados:</span
       >
-      <span>Clientes por página</span>
+
+      <div>
+        <mat-label>Clientes por página: </mat-label>
+        <mat-form-field appearance="outline" class="mat-select">
+          <mat-select [(ngModel)]="pageSize" (selectionChange)="paginationPageSize(pageSize)">
+            <mat-option *ngFor="let opcao of opcoes" [value]="opcao" >
+              {{ opcao }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
     <div class="cards">
       <div *ngFor="let client of clients">
@@ -14,16 +24,11 @@
       </div>
     </div>
     <button mat-stroked-button class="button-new" (click)="newClient()">Criar cliente</button>
-    <div>
-      <mat-paginator
-        [length]="100"
-        [pageSize]="totalElements"
-        [pageIndex]="currentPage"
-        (page)="handlePageEvent($event)"
-        [pageSizeOptions]="[5, 10, 50, 100]"
-        aria-label="Select page"
-      >
-      </mat-paginator>
+
+    <div class="row-pagination">
+      <div *ngFor="let page of pages">
+        <button mat-button (click)="pagination(page)" style="color: #000">{{ page }}</button>
+      </div>
     </div>
   </div>
 </div>

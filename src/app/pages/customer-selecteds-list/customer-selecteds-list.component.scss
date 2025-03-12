@@ -24,3 +24,14 @@
   
     gap: 10px;
   }
+
+  .button-new{
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid #ec6724 !important;
+    color: #ec6724 !important;
+  }
+  
+  .button-new:hover{
+    background-color: #e6a17e50 !important;
+  }

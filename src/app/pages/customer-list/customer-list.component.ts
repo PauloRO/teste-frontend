@@ -20,10 +20,25 @@ import {
 } from '@angular/material/dialog';
 import { CustomerCreateDialogComponent } from './customer-create-dialog/customer-create-dialog.component';
 import { RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatToolbar } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-customer-list',
-  imports: [ToolbarComponent, CommonModule, HttpClientModule, MatPaginatorModule, CardComponent, MatButtonModule],
+  imports: [
+    
+    CommonModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    CardComponent,
+    MatButtonModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    FormsModule,
+
+  ],
   providers: [ClientService],
   templateUrl: './customer-list.component.html',
   styleUrl: './customer-list.component.scss',
@@ -36,31 +51,47 @@ export class CustomerListComponent implements OnInit {
   clients: Client[] = [];
   totalElements: number = 0;
   currentPage: number = 0;
+  pageSize: number = 10;
   totalPages: number = 0;
+  pages: any[] = [];
 
-  constructor(private storageService: StorageService, private clientService: ClientService, private dialog: MatDialog) {}
+  opcoes = [5, 10, 20, 25, 50];
+
+  constructor(
+    private storageService: StorageService,
+    private clientService: ClientService,
+    private dialog: MatDialog,
+  ) {}
 
   ngOnInit(): void {
     this.getNameUser();
-    this.findUsers(0, 10);
+    this.findUsers(this.currentPage, this.pageSize);
   }
 
-  findUsers(pageIndex:number, pageSize:number) {
+  findUsers(pageIndex: number, pageSize: number) {
     this.clientService.clients$.subscribe({
       next: (res) => {
         this.clients = res;
         this.totalElements = this.clientService.getTotalElements();
         this.currentPage = this.clientService.getCurrentPage();
         this.totalPages = this.clientService.getTotalPages();
-        
+        this.pages = [...Array(this.totalPages)].map((_, i) => this.totalPages - i).sort((a, b) => a - b);
       },
       error: (err) => {},
     });
 
-    this.clientService.carregarUsuarios(0, 10);
+    this.clientService.findUsers(pageIndex, pageSize);
   }
 
- 
+  pagination(page: number) {
+    this.currentPage = page;
+    this.findUsers(this.currentPage, this.pageSize);
+  }
+
+  paginationPageSize(pageSize: number) {
+    this.pageSize = pageSize;
+    this.pagination(this.currentPage)
+  }
 
   getNameUser(): void {
     this.userName = this.storageService.getItem('userName');
@@ -72,26 +103,26 @@ export class CustomerListComponent implements OnInit {
   }
 
   handlePageEvent(e: PageEvent) {
-    console.log(e)
-    this.findUsers(e.pageIndex , e.pageSize)
+    console.log(e);
+    this.findUsers(e.pageIndex, e.pageSize);
   }
 
   newClient(): void {
     const dialogRef = this.dialog.open(CustomerCreateDialogComponent, {
       width: '400px',
-      data: {},
+      data: {title:'Criar cliente:'},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed new');
-      console.log(result)
+      console.log(result);
       if (result !== null) {
         this.findUsers(0, 10);
       }
     });
   }
 
-  atDialogClosed(event: any): void { 
+  atDialogClosed(event: any): void {
     if (event) {
       this.findUsers(0, 10);
     }

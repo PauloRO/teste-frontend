@@ -1,3 +1,10 @@
+<div class="row-direction">
+<span mat-dialog-title>{{title}}</span>
+<button mat-icon-button (click)="closeDialog(null)">
+  <mat-icon>close</mat-icon>
+</button>
+
+</div>
 <mat-dialog-content class="column">
   <form [formGroup]="formGroup">
     <mat-form-field style="width: 100%">
@@ -24,6 +31,6 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button class="button-close" (click)="closeDialog(null)">Cancelar</button>
-  <button mat-button cdkFocusInitial class="button" (click)="createClient()" [disabled]="!formGroup.valid">Criar</button>
+  <!-- <button mat-button class="button-close" (click)="closeDialog(null)">Cancelar</button> -->
+  <button mat-button cdkFocusInitial class="button" (click)="createClient()" [disabled]="!formGroup.valid">{{formGroup.get('id')?.value ? 'Editar cliente' : 'Criar cliente'}}</button>
 </mat-dialog-actions>

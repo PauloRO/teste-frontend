@@ -6,7 +6,7 @@
           <app-card [client]="client" (atClose)="atDialogClosed($event)" (atRemoveClient)="updateClients($event)" [screen]="'selected'"></app-card>
         </div>
       </div>
-      
+      <button mat-stroked-button class="button-new" (click)="clear()">Limpar cliente selecionados</button>
     </div>
   </div>
   

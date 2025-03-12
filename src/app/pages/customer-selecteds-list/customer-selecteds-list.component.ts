@@ -53,4 +53,9 @@ export class CustomerSelectedsListComponent implements OnInit {
     if (event) {
     }
   }
+
+  clear() { 
+    this.storageService.removeItem('clientesSelecionados');
+    this.updateClients(true)
+  }
 }

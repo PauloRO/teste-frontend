@@ -14,18 +14,18 @@ export class ClientService {
   private clientsSelecionadosSubject = new BehaviorSubject<any[]>([]);
   clientsSelecionados$ = this.clientsSelecionadosSubject.asObservable();
 
-  private totalElements = 1;
-  private currentPage = 1;
+  private totalElements = 0;
+  private currentPage = 0;
   private totalPages = 0; // Itens por página
 
   constructor(private http: HttpClient) {}
 
-  findUsers(page: number, limit: number): Observable<any> {
+  /* findUsers(page: number, limit: number): Observable<any> {
     const link = this.requestURL + `users?page=${page}&limit=${limit}`;
     return this.http.get(link);
-  }
+  } */
 
-  carregarUsuarios(page: number, limit: number): void {
+  findUsers(page: number, limit: number): void {
     const params = new HttpParams()
       .set('page', page.toString())
       .set('limit', limit.toString());
@@ -79,7 +79,6 @@ export class ClientService {
     }
   }
   
-
   getClientesSelecionados(): any[] {
     return this.carregarClientesSelecionados();
   }
